@@ -1,6 +1,8 @@
 This is an Emacs Minor Mode: emacSay 
 With this minor mode, Emacs can say the word which you have just input onto screen. 
 
+NOTE: this minor mode is only available on Mac OS, because it will call the "say" command .
+
 Usage: 
      1. put emacsay-mode.el at .emacs.d(or someother dir), 
         add (load-file "~/.emacs.d/emacsay-mode.el")
@@ -12,6 +14,9 @@ Default hotkey:
     (define-key map "\C-cs" 'say-current-string)  ;;say the word in cursor 
     (define-key map "\C-cp" 'say-buffer) ;;say all current buffer 
     (define-key map "\C-ct" 'say-stop)   ;;stop saying current buffer 
+
+RoadMap:
+    Add different type of voice.  
 
 Welcome contribution :) .
 moorekang@gmail.com 
