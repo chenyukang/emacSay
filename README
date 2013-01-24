@@ -1,0 +1,16 @@
+This is an Emacs Minor Mode: emacSay 
+With this minor mode, Emacs can say the word which you have just input onto screen. 
+
+Usage: 
+     1. put emacsay-mode.el at .emacs.d(or someother dir), add (load-file "~/.emacs.d/emacsay-mode.el")
+     2. run emacsay-mode (or bind any hotkey you like) 
+
+     then type english word and funning thing happend :) 
+
+Default hotkey:      
+    (define-key map "\C-cs" 'say-current-string)  ;;put cursor at one word, say this word  
+    (define-key map "\C-cp" 'say-buffer) ;;say all current buffer 
+    (define-key map "\C-ct" 'say-stop)   ;;stop saying current buffer 
+
+Welcome contribution :) .
+moorekang@gmail.com 
