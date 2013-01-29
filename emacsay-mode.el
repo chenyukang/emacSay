@@ -45,7 +45,7 @@
   (message "stop saying buffer"))
 
 (defvar emacsay-mode-map nil
-  "Keymap for blog minor mode")
+  "Keymap for emacsay minor mode")
 (unless emacsay-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "\C-cs" 'say-current-string)
@@ -61,6 +61,7 @@
   :init-value nil
   ;; The indicator for the mode line.
   :lighter " EmacSay"
+  :keymap emacsay-mode-map)
   (add-hook 'post-self-insert-hook 'say-last-string))
   
 (provide 'emacsay-mode)
