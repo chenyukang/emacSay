@@ -1,8 +1,7 @@
-
 (defconst emacsay-mode-version "0.1")
 (defvar emacsay-mode-hook nil)
 
-(defun emacsay-version() 
+(defun emacsay-version()
   (interactive)
   (message "version %s : %s" emacsay-mode-version "moorekang@gmail.com"))
 
@@ -22,17 +21,23 @@
 	(say-this-string)
 	(goto-char pos)))
 
-;;if last char is not blank, say last word you have just input 
+;;if last char is not blank, say last word you have just input
 (defun emacsay-say-last-string()
   (interactive)
   (setq input_char (buffer-substring (- (point) 1) (point)))
-  (setq  prev_char (buffer-substring (- (point) 2) (- (point) 1)))
-  ;;only when emacsay-mode is on , say this word 
-  (if (and emacsay-mode (string= input_char " ") (eq nil (string= prev_char " ")))
+  (setq prev_char (buffer-substring (- (point) 2) (- (point) 1)))
+  ;;only when emacsay-mode is on , say this word
+  (if (and emacsay-mode
+	   (or
+	    (string= input_char " ")
+	    (string= input_char ".")
+	    (string= input_char ",")
+	    (string= input_char "!"))
+	    (eq nil (string= prev_char " ")))
       (let ((prev_pos (point)))
        (backward-word 1)
        (say-this-string)
-       (goto-char prev_pos))))  
+       (goto-char prev_pos))))
 
 (defun emacsay-say-buffer()
   (interactive)
@@ -60,7 +65,6 @@
   :lighter " EmacSay"
   :group 'emacsay
   :keymap emacsay-mode-map
-  (add-hook 'post-self-insert-hook 'say-last-string))
-  
-(provide 'emacsay-mode)
+  (add-hook 'post-self-insert-hook 'emacsay-say-last-string))
 
+(provide 'emacsay-mode)
